@@ -33,6 +33,11 @@ JWT_REFRESH_TOKEN_EXPIRATION=30d
 npm run start:dev
 ```
 
+```
+brew services start postgresql@15
+brew services stop postgresql@15
+```
+
 <br>
 
 # Domain
