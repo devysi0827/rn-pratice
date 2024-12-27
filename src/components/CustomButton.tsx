@@ -1,10 +1,10 @@
-import React from 'react';
 import {
   Pressable,
   StyleSheet,
   Text,
   PressableProps,
   Dimensions,
+  View,
 } from 'react-native';
 import {color} from '../consts/colors';
 
@@ -32,12 +32,13 @@ function CustomButton({
       disabled={inValid}
       style={({pressed}) => [
         styles.container,
-        styles[size],
         pressed ? styles[`${variant}Pressed`] : styles[variant],
         inValid && styles.inValid,
       ]}
       {...props}>
-      <Text style={(styles[`${variant}Text`], styles.text)}>{label}</Text>
+      <View style={styles[size]}>
+        <Text style={[styles[`${variant}Text`], styles.text]}>{label}</Text>
+      </View>
     </Pressable>
   );
 }
@@ -45,7 +46,10 @@ function CustomButton({
 const styles = StyleSheet.create({
   container: {
     borderRadius: 4,
+    width: '100%',
+    alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row',
   },
   filled: {
     backgroundColor: color.PINK_700,
@@ -59,6 +63,7 @@ const styles = StyleSheet.create({
     paddingVertical: deviceHeight > 700 ? 15 : 10,
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row',
   },
   inValid: {
     opacity: 0.5,
@@ -68,6 +73,7 @@ const styles = StyleSheet.create({
     paddingVertical: deviceHeight > 700 ? 12 : 8,
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row',
   },
   text: {
     fontSize: 16,
